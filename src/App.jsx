@@ -6,6 +6,7 @@ import {
   Content,
   DeepStructure,
 } from "./styles/StyledComponents";
+import { TestContext } from "./context/TestContext";
 
 // prop drilling 브랜치
 function App() {
@@ -17,7 +18,9 @@ function App() {
       <Content>
         <StateControl onMessageChange={setMessage} />
         <DeepStructure>
-          <Level1 message={message} />
+          <TestContext.Provider value={{ message }}>
+            <Level1 message={message} />
+          </TestContext.Provider>
         </DeepStructure>
       </Content>
     </AppContainer>
